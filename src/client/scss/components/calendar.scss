@@ -1,0 +1,181 @@
+.calendar-wrapper {
+  width: 100%;
+  margin: auto;
+  border: 1px solid #eee;
+  padding: 10px;
+}
+
+.buttons-container {
+  cursor: pointer;
+}
+
+.week {
+  overflow: hidden;
+  margin: 10px 0;
+  &.highlight {
+    background: #efefef;
+    border-radius: 5px;
+  }
+  .day.header {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 120%;
+  }
+
+  /* weekend */
+  &:not(.start-on-monday) .day:first-child,
+  &:not(.start-on-monday) .day:last-child {
+    color: orange;
+  }
+
+  /* sunday */
+  &:not(.start-on-monday) .day:first-child {
+    color: red;
+  }
+
+  /* start on monday - weekend */
+  &.start-on-monday .day:nth-child(6),
+  &.start-on-monday .day:last-child {
+    color: orange;
+  }
+
+  /* start on monday - sunday */
+  &.start-on-monday .day:last-child {
+    color: red;
+  }
+
+  .day.highlight span {
+    color: #2196f3;
+  }
+
+  .day.selected span {
+    background: #1565c0;
+    color: white;
+  }
+
+  .day[disabled="disabled"] span {
+    color: #aaa;
+    cursor: not-allowed;
+  }
+}
+
+.day {
+  display: inline-block;
+  width: 14.28%;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  &.disabled span {
+    color: #aaa;
+  }
+  &.today span {
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    font-size: 110%;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom: 2px solid orange;
+      width: 10px;
+      height: 1px;
+    }
+  }
+  span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  &.sunday span {
+    color: #ff8a80;
+  }
+}
+
+.months-container.hidden,
+.weeks-container.hidden {
+  display: none;
+}
+
+.months-wrapper {
+  overflow: hidden;
+  .month {
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    cursor: pointer;
+    &.one-third {
+      width: 33.33%;
+    }
+  }
+}
+
+.buttons-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  .label-container {
+    display: inline-block;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+.year-dropdown {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  padding: 5px 20px;
+}
+
+.prev-button,
+.next-button {
+  background: transparent;
+  border: none;
+  padding: 10px;
+}
+
+.weeks-wrapper.header {
+  border-bottom: 1px solid #eee;
+}
+
+.months-wrapper .month span {
+  display: inline-block;
+  padding: 10px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.special-buttons {
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.today-button {
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  padding: 5px;
+}

@@ -9,6 +9,7 @@ app.set("views", __dirname + "/views");
 
 app.use(logger);
 app.use("/static", express.static("assets"));
+app.use("/images", express.static("src/images"));
 
 app.get("/", (_, res) => res.render("home"));
 

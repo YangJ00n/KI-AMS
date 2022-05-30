@@ -1,3 +1,56 @@
+// Config
+@import "./config/_reset.scss";
+
+// Components
+@import "./components/calendar.scss";
+@import "./components/header.scss";
+
+@font-face {
+  font-family: "EarlyFontDiary";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "EarlyFontDiary" !important;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 h1 {
-  color: tomato;
+  text-align: center;
+  margin: 50px 0 30px 0;
+  padding: 0 10px;
+  font-size: 30px;
+}
+
+.start {
+  margin-top: 10px;
+  div {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 5px;
+    select,
+    button {
+      text-align: center;
+      width: 100%;
+      height: 50px;
+      background-color: #efefef;
+      border: 1px solid #eee;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 15px;
+      &:hover {
+        border: 1px solid rgba(33, 149, 243, 0.5);
+      }
+    }
+  }
 }

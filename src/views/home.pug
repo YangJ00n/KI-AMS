@@ -2,4 +2,15 @@ extends base
 
 block content
     h1 경일고 야자 출석부
+    div.calendar-wrapper#calendar-wrapper
+    form(method="POST" action="attendance").start
+        input(type="hidden" name="selectedDate")#selectedDate
+        div 
+            select(name="grade") 
+                each g of [1,2,3]
+                    option(value=`${g}학년`)=`${g}학년`
+            button 출석 확인하기
     
+block scripts
+    script(src="http://code.jquery.com/jquery-3.6.0.min.js")
+    script(src="/static/js/calendar.js")

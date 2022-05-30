@@ -1,7 +1,7 @@
 {
   "name": "ki-ams",
   "version": "1.0.0",
-  "description": "Busan Kyongil High School Attendance Management Service 📝",
+  "description": "Busan Kyongil High School Attendance Management Service 📝 - 부산 경일고 야자 출석부",
   "scripts": {
     "dev:server": "nodemon",
     "dev:assets": "webpack --mode=development -w"
