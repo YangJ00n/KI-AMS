@@ -1,0 +1,8 @@
+extends base
+
+block content
+    form(method="POST")
+        div
+            label(for="name") 그룹 이름
+            input(name="name", type="text", required, autocomplete="off", id="name")
+        button 만들기

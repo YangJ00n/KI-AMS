@@ -22,14 +22,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     li {
       font-size: 14px;
       font-weight: 600;
-      a {
-        text-decoration: none;
-        color: #551a8b;
-      }
+    }
+    a {
+      color: #551a8b;
     }
   }
 }
@@ -37,5 +36,10 @@ header {
 @media (max-width: 800px) {
   header {
     padding: 10px 20px;
+    .header__logo {
+      img {
+        width: 160px;
+      }
+    }
   }
 }

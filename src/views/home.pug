@@ -1,11 +1,17 @@
 extends base
 
 block content
-    h1 경일고 야자 출석부
-    div.calendar-wrapper#calendar-wrapper
-    a.startBtn#startBtn
-        span 출석 확인하기
-    
-block scripts
-    script(src="http://code.jquery.com/jquery-3.6.0.min.js")
-    script(src="/static/js/calendar.js")
+    h2 그룹 만들기
+    form(method="POST")
+        div
+            label(for="name") 그룹 이름
+            input(name="name", type="text", required, autocomplete="off", id="name")
+        button 그룹 만들기
+
+    div.groups
+        h2 그룹 목록
+        ul
+            each group of groups 
+                li
+                    a(href=`/groups/${group._id}`)
+                        span=group.name

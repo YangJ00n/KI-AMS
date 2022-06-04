@@ -1,0 +1,21 @@
+form {
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  div {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    gap: 5px;
+    label {
+      display: flex;
+      align-items: center;
+    }
+  }
+  input:focus {
+    outline-color: black;
+  }
+}
