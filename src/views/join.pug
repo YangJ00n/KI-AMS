@@ -1,0 +1,18 @@
+extends base
+
+block content 
+    h2 회원가입
+    form(method="POST")
+        div
+            label(for="name") 성함
+            input(name="name", type="text", required, autocomplete="off", id="name")
+        div
+            label(for="password") 비밀번호
+            input(name="password", type="password", required, id="password")
+        div
+            label(for="password2") 비밀번호 확인
+            input(name="password2", type="password", required, id="password2")
+        div 
+            label(for="secret") 시크릿
+            input(name="secret", type="password", required, id="secret")
+        button 회원가입

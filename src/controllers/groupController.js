@@ -6,11 +6,14 @@ export const home = async (_, res) => {
 };
 export const createGroup = async (req, res) => {
   const {
+    session: {
+      teacher: { _id },
+    },
     body: { name },
   } = req;
 
   try {
-    await Group.create({ name });
+    await Group.create({ name, createdBy: _id });
     return res.redirect("/");
   } catch (error) {
     console.log(error);

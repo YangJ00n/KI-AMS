@@ -1,17 +1,26 @@
 extends base
 
 block content
-    h2 그룹 만들기
-    form(method="POST")
-        div
-            label(for="name") 그룹 이름
-            input(name="name", type="text", required, autocomplete="off", id="name")
-        button 그룹 만들기
+    if loggedIn
+        h2 그룹 만들기
+        form(method="POST")
+            div
+                label(for="name") 그룹 이름
+                input(name="name", type="text", required, autocomplete="off", id="name")
+            button 그룹 만들기
 
-    div.groups
-        h2 그룹 목록
-        ul
-            each group of groups 
-                li
-                    a(href=`/groups/${group._id}`)
-                        span=group.name
+        div.groups
+            if groups[0]
+                h2 그룹 목록
+                ul
+                    each group of groups 
+                        li
+                            a(href=`/groups/${group._id}`)
+                                span=group.name
+            else 
+                h2 그룹이 존재하지 않습니다.
+    else 
+        a(href="/login") 
+            h2 로그인 ->
+        a(href="/join") 
+            h2 회원가입 ->

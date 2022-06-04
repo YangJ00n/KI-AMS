@@ -5,7 +5,7 @@ html(lang="ko")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/static/css/styles.css")
-        title 경일고 야자 출석부
+        title=siteName
     body 
         header 
             a(href="/").header__logo
@@ -13,9 +13,13 @@ html(lang="ko")
             nav
                 ul
                     li
-                        a(href="/login") 로그인
+                        if loggedIn
+                            a(href="/logout") 로그아웃
+                        else 
+                            a(href="/login") 로그인
+
         main
-            h1 경일고 야자 출석부
+            h1=siteName
             block content
 
         script(src="/static/js/main.js")

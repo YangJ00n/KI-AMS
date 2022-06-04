@@ -1,0 +1,12 @@
+extends base
+
+block content 
+    h2 로그인
+    form(method="POST")
+        div
+            label(for="name") 성함
+            input(name="name", type="text", required, autocomplete="off", id="name")
+        div
+            label(for="password") 비밀번호
+            input(name="password", type="password", required, id="password")
+        button 로그인하기
