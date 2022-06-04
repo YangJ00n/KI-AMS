@@ -653,9 +653,24 @@ function selectDate(date) {
   $("#calendar-wrapper").updateCalendarOptions({
     date: date,
   });
-  $("#selectedDate").val(calendar.getSelectedDate());
+  $("#startBtn").attr(
+    "href",
+    `${location.pathname === "/" ? "" : location.pathname}/${formatDate(
+      calendar.getSelectedDate()
+    )}`
+  );
   console.log(calendar.getSelectedDate());
 }
+
+// format date -> YYYYMMDD
+const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month =
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const _date = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+
+  return `${year}${month}${_date}`;
+};
 
 const today = new Date();
 
@@ -668,5 +683,10 @@ var defaultConfig = {
 };
 
 var calendar = $("#calendar-wrapper").calendar(defaultConfig);
-$("#selectedDate").val(calendar.getSelectedDate());
+$("#startBtn").attr(
+  "href",
+  `${location.pathname === "/" ? "" : location.pathname}/${formatDate(
+    calendar.getSelectedDate()
+  )}`
+);
 console.log(calendar.getSelectedDate());
