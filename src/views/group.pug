@@ -1,0 +1,21 @@
+extends base
+
+block content 
+    h2 룸 만들기
+    form(method="POST" action="/rooms/create")
+        input(type="hidden", name="group_id", value=group._id)
+        div
+            label(for="name") 룸 이름
+            input(name="name", type="text", required, autocomplete="off", id="name")
+        button 룸 만들기
+
+    div.rooms
+        if rooms[0]
+            h2 룸 목록
+            ul
+                each room of rooms 
+                    li
+                        a(href=`/rooms/${room._id}`)
+                            span=room.name
+        else 
+            h2 룸이 존재하지 않습니다.

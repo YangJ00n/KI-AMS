@@ -3,7 +3,7 @@ extends base
 block content
     if loggedIn
         h2 그룹 만들기
-        form(method="POST")
+        form(method="POST" action="/groups/create")
             div
                 label(for="name") 그룹 이름
                 input(name="name", type="text", required, autocomplete="off", id="name")

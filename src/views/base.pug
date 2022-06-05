@@ -12,14 +12,18 @@ html(lang="ko")
                 img(src="/images/logo.png")
             nav
                 ul
-                    li
-                        if loggedIn
-                            a(href="/logout") 로그아웃
-                        else 
+                    if loggedIn
+                        li
+                            a(href="/logout") #{loggedInTeacher.name} | 로그아웃
+                    else 
+                        li
                             a(href="/login") 로그인
 
         main
-            h1=siteName
+            if back 
+                span.back 
+                    a(href=back.link) <- #{back.title}
+            h1 #{pageTitle || siteName}
             block content
 
         script(src="/static/js/main.js")

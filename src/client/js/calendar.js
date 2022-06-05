@@ -655,28 +655,27 @@ function selectDate(date) {
   });
   $("#startBtn").attr(
     "href",
-    `${location.pathname === "/" ? "" : location.pathname}/${formatDate(
-      calendar.getSelectedDate()
-    )}`
+    `${location.pathname}?date=${formatDate(calendar.getSelectedDate())}`
   );
   console.log(calendar.getSelectedDate());
 }
 
-// format date -> YYYYMMDD
+// format date -> YYYY-MM-DD
 const formatDate = (date) => {
   const year = date.getFullYear();
   const month =
     date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const _date = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
 
-  return `${year}${month}${_date}`;
+  return `${year}-${month}-${_date}`;
 };
 
 const today = new Date();
+const defaultDate = new URLSearchParams(location.search).get("date");
 
 var defaultConfig = {
   weekDayLength: 1,
-  date: `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`,
+  date: defaultDate || today,
   onClickDate: selectDate,
   showYearDropdown: true,
   startOnMonday: false,
@@ -685,8 +684,6 @@ var defaultConfig = {
 var calendar = $("#calendar-wrapper").calendar(defaultConfig);
 $("#startBtn").attr(
   "href",
-  `${location.pathname === "/" ? "" : location.pathname}/${formatDate(
-    calendar.getSelectedDate()
-  )}`
+  `${location.pathname}?date=${formatDate(calendar.getSelectedDate())}`
 );
 console.log(calendar.getSelectedDate());

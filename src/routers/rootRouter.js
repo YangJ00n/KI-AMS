@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { home, createGroup } from "../controllers/groupController";
+import { home } from "../controllers/groupController";
 import {
   getLogin,
   postLogin,
@@ -11,7 +11,7 @@ import { protectorMiddleware, publicOnlyMiddleware } from "../middleware";
 
 const rootRouter = Router();
 
-rootRouter.route("/").get(home).post(createGroup);
+rootRouter.get("/", home);
 rootRouter
   .route("/login")
   .all(publicOnlyMiddleware)
