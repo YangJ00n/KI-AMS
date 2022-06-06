@@ -3,11 +3,6 @@ import mongoose from "mongoose";
 const attendanceSchema = new mongoose.Schema({
   date: { type: Date, required: true },
   attendance: { type: Object, required: true },
-  student: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "Student",
-  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

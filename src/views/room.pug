@@ -5,9 +5,27 @@ block content
     a.btn#startBtn
         span 출석 확인하기
 
+    form.seatForm(method="POST" action=`/rooms/${room._id}/seats`)
+        h2 좌석표 
+        span ❗️자리 설정 후 "자리 설정 완료" 버튼을 눌러주세요.
+        div
+            -for (let r = 1; r <= room.row; r++)
+                ul.line
+                    -for (let c = 1; c<= room.col; c++)
+                        li.seat
+                            span #{room.col * (r-1) + c}
+                            span
+                                input(name="name", type="text", id="name", autocomplete="off", value=room.seats[room.col * (r-1) + c - 1])
+                            ul 
+                                li 
+                                li 
+                                li 
+        button 자리 설정 완료
+
     span.deleteBtn 
         a(href=`/rooms/${room._id}/delete`) #{room.name} 룸 삭제하기
     
 block scripts
     script(src="http://code.jquery.com/jquery-3.6.0.min.js")
     script(src="/static/js/calendar.js")
+    script(src="/static/js/seat.js")

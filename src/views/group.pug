@@ -6,7 +6,13 @@ block content
         input(type="hidden", name="group_id", value=group._id)
         div
             label(for="name") 룸 이름
-            input(name="name", type="text", required, autocomplete="off", id="name")
+            input(name="name", type="text", required, autocomplete="off", id="name", placeholder="ex) 2반")
+        div 
+            label(for="col") 좌석 열
+            input(type="number", name="col", required, min="1", max="10", step="1", value="5")
+        div 
+            label(for="row") 좌석 행
+            input(type="number", name="row", required, min="1", max="10", step="1", value="6")
         button 룸 만들기
 
     div.rooms

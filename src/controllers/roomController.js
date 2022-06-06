@@ -6,7 +6,7 @@ export const createRoom = async (req, res) => {
     session: {
       teacher: { _id },
     },
-    body: { name, group_id },
+    body: { name, group_id, col, row },
   } = req;
 
   const group = await Group.findById(group_id);
@@ -15,7 +15,13 @@ export const createRoom = async (req, res) => {
   }
 
   try {
-    const room = await Room.create({ name, createdBy: _id, group: group_id });
+    const room = await Room.create({
+      name,
+      col,
+      row,
+      createdBy: _id,
+      group: group_id,
+    });
     group.rooms.push(room._id);
     await group.save();
 
@@ -70,4 +76,15 @@ export const deleteRoom = async (req, res) => {
   await Room.findByIdAndDelete(id);
 
   return res.redirect(`/groups/${String(room.group)}`);
+};
+
+export const setSeats = async (req, res) => {
+  const {
+    params: { id },
+    body: { name: nameList },
+  } = req;
+
+  await Room.findByIdAndUpdate(id, { seats: nameList });
+
+  return res.redirect(`/rooms/${id}`);
 };

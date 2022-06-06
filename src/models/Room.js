@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 
 const roomSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  col: { type: Number, required: true, default: 5 },
+  row: { type: Number, required: true, default: 6 },
+  seats: { type: Array, required: true, default: [] },
   group: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Group" },
-  students: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }],
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

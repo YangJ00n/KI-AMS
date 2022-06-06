@@ -5,6 +5,7 @@ import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter";
 import groupRouter from "./routers/groupRouter";
 import roomRouter from "./routers/roomRouter";
+import apiRouter from "./routers/apiRouter";
 import { localsMiddleware, protectorMiddleware } from "./middleware";
 
 const app = express();
@@ -34,5 +35,6 @@ app.use("/images", express.static("src/images"));
 app.use("/", rootRouter);
 app.use("/groups", protectorMiddleware, groupRouter);
 app.use("/rooms", protectorMiddleware, roomRouter);
+app.use("/api", protectorMiddleware, apiRouter);
 
 export default app;

@@ -5,6 +5,7 @@
 @import "./components/calendar.scss";
 @import "./components/header.scss";
 @import "./components/form.scss";
+@import "./components/seat.scss";
 
 @font-face {
   font-family: "EarlyFontDiary";
@@ -22,7 +23,7 @@
 main {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -85,7 +86,7 @@ form button {
   margin-top: 30px;
   ul {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 5px;
     a {
       display: flex;
@@ -98,6 +99,15 @@ form button {
       &:hover {
         border-color: rgba(0, 0, 0, 0.5);
       }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .groups,
+  .rooms {
+    ul {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
