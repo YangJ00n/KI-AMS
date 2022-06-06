@@ -2,8 +2,11 @@ extends base
 
 block content 
     div.calendar-wrapper#calendar-wrapper
-    a.startBtn#startBtn
+    a.btn#startBtn
         span 출석 확인하기
+
+    span.deleteBtn 
+        a(href=`/rooms/${room._id}/delete`) #{room.name} 룸 삭제하기
     
 block scripts
     script(src="http://code.jquery.com/jquery-3.6.0.min.js")

@@ -50,3 +50,23 @@ export const groupHome = async (req, res) => {
     },
   });
 };
+
+export const deleteGroup = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  const group = await Group.findById(id);
+  if (!group) {
+    return res
+      .status(404)
+      .render("error", { errorMessage: "그룹을 찾을 수 없습니다." });
+  }
+
+  await Group.findByIdAndDelete(id);
+  for (const room_id of group.rooms) {
+    await Room.findByIdAndDelete(room_id);
+  }
+
+  return res.redirect("/");
+};

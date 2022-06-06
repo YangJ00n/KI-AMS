@@ -48,3 +48,26 @@ export const roomHome = async (req, res) => {
     },
   });
 };
+
+export const deleteRoom = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  const room = await Room.findById(id);
+  if (!room) {
+    return res
+      .status(404)
+      .render("error", { errorMessage: "룸을 찾을 수 없습니다." });
+  }
+
+  const group = await Group.findById(room.group);
+
+  const filteredRooms = group.rooms.filter(
+    (room_id) => String(room_id) !== String(id)
+  );
+  await Group.findByIdAndUpdate(room.group, { rooms: filteredRooms });
+  await Room.findByIdAndDelete(id);
+
+  return res.redirect(`/groups/${String(room.group)}`);
+};

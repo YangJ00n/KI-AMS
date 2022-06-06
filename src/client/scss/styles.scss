@@ -48,9 +48,21 @@ a {
   width: fit-content;
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
-.startBtn,
+.deleteBtn {
+  margin-top: 30px;
+  font-size: 15px;
+  a {
+    color: rgb(225, 15, 15);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.btn,
 form button {
   margin-top: 10px;
   width: 100%;

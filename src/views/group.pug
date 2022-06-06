@@ -19,3 +19,6 @@ block content
                             span=room.name
         else 
             h2 룸이 존재하지 않습니다.
+
+    span.deleteBtn 
+        a(href=`/groups/${group._id}/delete`) #{group.name} 그룹 삭제하기
